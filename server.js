@@ -16,7 +16,7 @@ server.use("/api/users", userRouter);
 
 console.log(`My name is Soft`)
 
-server.get('/', (req, res) => {
+server.get('/', (req, res) => {   
     res.send('Hello Soft');
 });
 
