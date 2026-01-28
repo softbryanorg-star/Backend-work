@@ -13,7 +13,7 @@ server.listen(3000, () => {
     console.log(`Server is running in port ${process.env.PORT}`);
 });
 
-server.use(cors(...)); 
+server.use(cors());
  
 //   Routes
 server.use("/api/users", userRouter);
@@ -52,4 +52,4 @@ server.use(
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
-); */
+); 
