@@ -1,6 +1,7 @@
 // import 'dotenv/config';
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import {mongoose} from "mongoose";
 import userRouter from "./route/user.js";
 import productRouter from "./route/product.js";
@@ -11,10 +12,12 @@ dotenv.config()
 server.listen(3000, () => {
     console.log(`Server is running in port ${process.env.PORT}`);
 });
+
+server.use(cors(...)); 
  
 //   Routes
 server.use("/api/users", userRouter);
-server.use("/api/products", productRouter);
+server.use("/api/products", productRouter); 
 
 console.log(`My name is Soft`)
 
@@ -30,21 +33,12 @@ mongoose.connect(process.env.MONGOBASE_URL)
 });
 
 
-// ✅ 1. Enable CORS before everything else
-// const allowedOrigins = [
-//   "http://localhost:5173",
-//   "https://hgsccdigitalskills.vercel.app",
-// ];
-/*const allowedOrigins = [
-  "https://hgsccdigitalskills.com.ng",
-  "https://www.hgsccdigitalskills.com.ng",
-  "http://hgsccdigitalskills.com.ng",
-  "http://www.hgsccdigitalskills.com.ng",
-  "http://localhost:5173",
-  "https://hgsccdigitalskills.vercel.app",
-];
+ //✅ 1. Enable CORS before everything else
+ const allowedOrigins = [
+   "http://localhost:5173",
+ ];
 
-app.use(
+server.use(
   cors({
     origin: function (origin, callback) {
       if (!origin) return callback(null, true); // mobile apps, Postman
