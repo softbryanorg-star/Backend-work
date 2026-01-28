@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 export const createStudents = async (req, res) => { 
     try {
         // read input from request body
-        const { name, email, phoneNumber, password, country, state } = req.body;
+        const { name, email, phoneNumber, password, country, state, img} = req.body;
         // check if email exists
         const exist = await cohortfour.findOne({ email });
         if (exist) {
